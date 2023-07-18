@@ -11,7 +11,7 @@ let
         , DemoteColumnNames = List.Transform( ListOfTables, each Table.DemoteHeaders( _ ) )   //tranpose function will lose column names, too. So, we will preserve them as a row.
         , TransposeEachTable = List.Transform( DemoteColumnNames, each Table.Transpose( _ ) )   //we use transpose to convert join to union.
         , Union = Table.Combine( TransposeEachTable )
-        , RemoveDuplicateColumns = Table.Distinct( Union, "Column1")    //again we will remove duplicate columns. Before we remove duplicate columns as types, now we remove their data.
+        , RemoveDuplicateColumns = Table.Distinct( Union, "Column1")    //again we will remove duplicate columns. Before we removed duplicate columns as types, now we remove their data.
         , TransposeBack = Table.PromoteHeaders( Table.Transpose( RemoveDuplicateColumns ) )
         , ApplyTypesBack = Table.TransformColumnTypes( TransposeBack, List.Zip( { Table.ColumnNames( TransposeBack ), TransformToRealTypes } ) )
 //lets make a function from this body.
