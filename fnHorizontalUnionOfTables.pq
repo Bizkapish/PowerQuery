@@ -37,7 +37,7 @@ let
                                              If some tables have columns with the same name, only first column with such name will remain, others will be removed.
                                              Tables dont need to have the same number of rows. Orphan rows will be filled with nulls."
           , Documentation.Examples = { [ Description = "We have left and right table. They don't have the same number of rows. Lets glue them together."
-                                       , Code = "fnHorizontalUnion( #table( { ""A"" }, {{ ""Apple"" }, { ""Pear"" }} ), #table( { ""B"" }, {{ ""Orange"" }} ) )"
+                                       , Code = "fnHorizontalUnionOfTables( #table( { ""A"" }, {{ ""Apple"" }, { ""Pear"" }} ), #table( { ""B"" }, {{ ""Orange"" }} ) )"
                                        , Result = "#table( { ""A"", ""B"" }, {{ ""Apple"", ""Orange"" }, { ""Pear"", null }} )" ]  } ]
     , AddDocumentationToFunction = Value.ReplaceType( funcHorizontalUnionOfTables, fnDocumentatation )
     , Result = if true then AddDocumentationToFunction else ApplyTypesBack    //by toggling true/false you can return function or procedure. Procedure is used for function development. 
