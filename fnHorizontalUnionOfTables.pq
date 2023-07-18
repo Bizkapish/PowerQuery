@@ -17,7 +17,7 @@ let
 //lets make a function from this body.
     , funcHorizontalUnionOfTables = ( ListOfTables as list ) as table  => 
       let 
-        , GetColumnTypes = List.Transform( ListOfTables, each Table.Schema( _ ) )     //first we will get list of column types. We need them because transpose function will delete them.
+        GetColumnTypes = List.Transform( ListOfTables, each Table.Schema( _ ) )     //first we will get list of column types. We need them because transpose function will delete them.
         , GetDistinctTypes = Table.Distinct( Table.Combine( GetColumnTypes ), "Name" )[Kind]     //some columns are duplicate, we remove them, only the first column will remain.
         , TransformToRealTypes = List.Transform( GetDistinctTypes, each Expression.Evaluate( "type " & _ ) )  //we need types as objects. We achive that with Expression.Evaluate.
         , DemoteColumnNames = List.Transform( ListOfTables, each Table.DemoteHeaders( _ ) )   //tranpose function will lose column names, too. So, we will preserve them as a row.
