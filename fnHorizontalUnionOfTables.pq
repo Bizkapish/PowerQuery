@@ -1,5 +1,5 @@
 let
-//This is for development and testin. Read the comment at the bottom. Real function is bellow.
+//This is for development and testing. Read the comment at the bottom. Real function is bellow.
         Tab1 = #table( type table [A=number], { { 1 }, { 2 } } )      //these are sample data
         , Tab2 = #table( { "B" }, { { 3 }, { 4 }, { 5 } } )
         , Tab3 = #table( { "A" }, { { 1 }, { 2 } } )
