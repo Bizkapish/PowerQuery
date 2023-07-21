@@ -1,9 +1,9 @@
 let
 //This is for development and testing. Read the comment at the bottom. Real function is bellow.
-        Tab1 = #table( type table [A=number], { { 1 }, { 2 } } )      //these are sample data
-        , Tab2 = #table( { "B" }, { { 3 }, { 4 }, { 5 } } )
-        , Tab3 = #table( { "A" }, { { 1 }, { 2 } } )
-        , ListOfTables = { Tab1, Tab2, Tab3 }
+    Tab1 = #table( type table [A=number], { { 1 }, { 2 } } )      //these are sample data
+    , Tab2 = #table( { "B" }, { { 3 }, { 4 }, { 5 } } )
+    , Tab3 = #table( { "A" }, { { 1 }, { 2 } } )
+    , ListOfTables = { Tab1, Tab2, Tab3 }
 //Body: This will join tables horizontally, first row to first row, second row to second row etc.
         , GetColumnTypes = List.Transform( ListOfTables, each Table.Schema( _ ) )     //first we will get list of column types. We need them because transpose function will delete them.
         , GetDistinctTypes = Table.Distinct( Table.Combine( GetColumnTypes ), "Name" )[Kind]     //some columns are duplicate, we remove them, only the first column will remain.
